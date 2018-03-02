@@ -2,6 +2,8 @@
 import hashlib
 import json
 from time import time
+import requests
+from urllib.parse import urlparse
 
 class Blockchain(object):
     def __init__(self):
@@ -9,6 +11,7 @@ class Blockchain(object):
         self.current_transactions=[]
         # Create the genesis blcok
         self.new_block(previous_hash=1,proof=100)
+        self.nodes=set()
     def new_block(self,proof,previous_hash=None):
         """
         生成新块
@@ -86,5 +89,50 @@ class Blockchain(object):
         guess_hash=hashlib.sha256(guess).hexdigest()
         print(f"value_proof:{guess_hash}")
         return guess_hash[:4]=="0000"
+    def register_node(self,address):
+        """
+        add a new node to the list of nodes
+        :para address:<str>address of node.Eg.'http://'
+        :return: None
+        """
+        parsed_url=urlparse(address)
+        self.nodes.add(parsed_url.netloc)
 
+   def valid_chain(self,chain):
+       """
+       Determine if a given blockchain is valid
+       :param chain:<list> a blockchain
+       :return:<bool>True if valid,False if not
+       """
+       last_block=chain[0]
+       current_index=1
+       while current_index<len(chain):
+           block=chain[current_index]
+           print(f"{last_block}")
+           print(f"{block}")
+           print(f"{\n--------\n}")
+           # check that the hash of the block is corrent
+           if block['previous_hash'] !=self.hash(last_block):
+               return False
+           # check that the proof of work is corrent
+           if not self.valid_proof(last_block['proof'],block['proof']):
+               return False
+           last_block=block
+        return True
 
+    def resolve_conflicts(self):
+        """
+        共识算法解决冲突
+        使用网络中最长的链.
+        :return: <bool> True 如果链被取代, 否则为False
+        """
+        neighbours=self.nodes
+        new_chain=None
+        # We're only looking for chains longer than ours
+        max_length=len(self.chain)
+        # Grab and verify the chains from all teh nodes in our network
+        for node in neighbours:
+            response=requests.get(f"http://{node}/chain")
+
+        
+        
