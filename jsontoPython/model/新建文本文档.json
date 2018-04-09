@@ -1,0 +1,78 @@
+{
+	"user_id": "userid191812391",
+	"password": " ",
+	"Gender": 1,
+	"birthday": "1992-10-08",
+	"phone": "13122279802",
+	"name": "Lee",
+	"Cons": 10,
+	"gps_info": "11.12345678,11,12345678",
+	"activity_time": "yyyy-MM-dd HH:mm:ss",
+	"sign": "",
+	"vip": "0",
+	"being_liked_num": 999,
+	"info": {
+		"industry": "it",
+		"work": "android",
+		"comp": "文思海辉",
+		"city": "上海",
+		"hauntedly": ""
+	},
+	"tag": ["帅", "酷"],
+	"interest": {
+		"sports": ["游泳", "球"],
+		"music": ["miku39", "生日歌"],
+		"food": ["肉", "肉"],
+		"movie": ["阿凡达", "仙剑 "],
+		"booksAndComic": ["三体", "Re:0"],
+		"footprint": ["南京", "上海"]
+	},
+	"answer": [{
+			"a": "你怎么这么帅?",
+			"q": "天生的"
+		},
+		{
+			"a": "你怎么这么帅?",
+			"q": "我不介意再回答你一次"
+		}
+	],
+	"media": [{
+			"type": 1,
+			"url": "http://asf",
+			"order": 2
+		},
+		{
+			"type": 1,
+			"url": "http://asf",
+			"order": 1
+		},
+		{
+			"type": 1,
+			"url": "http://asf",
+			"order": 3
+		}
+	],
+	"friend_show": {
+		"cover": "http://asdfa",
+		"showList": [{
+			"media": [{
+					"type": 1,
+					"url": "http://asf",
+					"order": 2
+				},
+				{
+					"type": 1,
+					"url": "http://asf",
+					"order": 2
+				},
+				{
+					"type": 1,
+					"url": "http://asf",
+					"order": 2
+				}
+			],
+			"time": "yyyy-MM-dd HH:mm:ss",
+			"title": "又被帅醒"
+		}]
+	}
+}
